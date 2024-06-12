@@ -3,14 +3,14 @@ let register1 = document.getElementById("register");
 let btn1 = document.getElementById("btn");
 
 function register() {
-  login1.style.transform = "translateX(-400px)";
-  register1.style.transform = "translateX(0)";
+  login1.style.transform = "translateX(-800px)";
+  register1.style.transform = "translateX(20%)";
   btn1.style.left = "110px";
 }
 
 function login() {
-  login1.style.transform = "translateX(0)";
-  register1.style.transform = "translateX(400px)";
+  login1.style.transform = "translateX(20%)";
+  register1.style.transform = "translateX(-800px)";
   btn1.style.left = "0";
 }
 

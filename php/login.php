@@ -9,7 +9,9 @@
 <body>
     <div class="container">
         <div class="form-box">
+        <input type="button" value="Inicio" onclick="window.location.href='../index.php'" class="home">
             <div class="button-box">
+            
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn" onclick="login()">Iniciar Sesión</button>
                 <button type="button" class="toggle-btn" onclick="register()">Registrarse</button>
