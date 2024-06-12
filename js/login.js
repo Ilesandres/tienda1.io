@@ -35,7 +35,8 @@ function iniciarSecion() {
     console.log("Respuesta del servidor", data);
     const responseDiv = document.createElement("div");
     responseDiv.style.position = 'absolute';
-    responseDiv.style.top = '70%';
+    responseDiv.style.fontSize='10px'
+    responseDiv.style.top = '69%';
     responseDiv.style.left = '50%';
     responseDiv.style.transform = 'translate(-50%, -50%)';
     responseDiv.style.padding = '20px';
