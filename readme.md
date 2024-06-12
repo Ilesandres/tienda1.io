@@ -1,4 +1,4 @@
-# 🧩 Puzzle Numérico 3x3
+#🛒📉 tienda en linea con SQL y PHP
 
 Este es un proyecto de un juego de puzzle numérico 3x3 desarrollado en HTML, CSS y JavaScript. El objetivo del juego es ordenar los números del 1 al 9 en una cuadrícula 3x3.
 
@@ -17,4 +17,4 @@ Este es un proyecto de un juego de puzzle numérico 3x3 desarrollado en HTML, CS
 
 1. Clona el repositorio a tu máquina local:
    ```bash
-   git clone https://github.com/Ilesandres/puzzle-numeros-3x3.git
+   git clone https://github.com/Ilesandres/tienda1.io.git

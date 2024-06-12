@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
 <div class="Title">
@@ -13,7 +13,7 @@
    
     <nav>
     <ul>
-    <li><a href="">login</a></li>
+    <li><a href="./php/login.php">login</a></li>
     <li><a href="">acerca de</a></li>
     <li><a href="">contactanos</a></li>
     <li><a href="">carrito</a></li>
@@ -50,6 +50,7 @@
                 echo "<td>" . $row["descripcion"]. "</td>";
                 echo "<td>" . $row["precioBase"]. "</td>";
                 echo "<td>" . $row["saldo"]. "</td>";
+               // echo '<td><button type="button">editar</button></td> ';
                 echo "</tr>";
             }
         } else {
@@ -59,6 +60,9 @@
         // Cerrar conexión
         $conn->close();
         ?>
-    </table>
+        
+       
+    </table> 
+    
 </body>
 </html>
