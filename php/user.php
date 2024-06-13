@@ -11,14 +11,14 @@
 </head>
 <body>
     <header class="text-center py-3">
-        <h1>Sección Personal</h1>
+        <h1 class="text-center text-secondary font-weight-bold ">Sección Personal</h1>
     </header>
     <nav class="text-center my-3">
         <button class="btn btn-primary mx-2" onclick="window.location='../index.php'">Inicio</button>
         <button class="btn btn-danger mx-2" onclick="cerrarSesion()">Cerrar Sesión</button>
     </nav>
     <div class="container-fluid row">
-        <form class="col-3 p-3 border rounded shadow-sm" method="POST">
+        <form class="col-3 p-3 border rounded shadow-sm" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <legend class="text-center">Nuevo Producto</legend>
                 <?php 
