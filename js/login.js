@@ -1,3 +1,9 @@
+const seS=sessionStorage.getItem('user');
+console.log(seS);
+if(seS){
+window.location.href='../php/user.php'
+}
+
 let login1 = document.getElementById("login");
 let register1 = document.getElementById("register");
 let btn1 = document.getElementById("btn");
@@ -15,6 +21,9 @@ function login() {
 }
 
 function iniciarSecion() {
+
+
+
   const user = document.getElementById("user").value;
   const password = document.getElementById("password").value;
   const datos = { user, password };
@@ -32,6 +41,7 @@ function iniciarSecion() {
 })
 .then((response) => response.json())
 .then((data) => {
+    sessionStorage.setItem('user',user);
     console.log("Respuesta del servidor", data);
     const responseDiv = document.createElement("div");
     responseDiv.style.position = 'absolute';
@@ -47,6 +57,8 @@ function iniciarSecion() {
     responseDiv.textContent = "Respuesta del servidor: " + JSON.stringify(data);
     document.body.appendChild(responseDiv);
     alert('Datos introducidos correctamente');
+    sessionStorage.setItem('super',data.usuario);
+    window.location.href='../php/user.php'
 })
 .catch((error) => console.error("Error: " + error));
 
