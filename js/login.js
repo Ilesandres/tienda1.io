@@ -37,7 +37,7 @@ function iniciarSecion() {
       if (data.status == "success") {
         sessionStorage.setItem("user", user);
         console.log("Datos introducidos correctamente");
-        sessionStorage.setItem("usuario", user);
+        sessionStorage.setItem("usuario", user+data.usuario);
         sessionStorage.setItem("super", data.usuario);
         await Swal.fire({
           title: "Bienvenido " + user,

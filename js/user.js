@@ -2,6 +2,8 @@
 
 function cerrarSesion() {
     sessionStorage.removeItem("user");
+    sessionStorage.removeItem('super');
+    sessionStorage.removeItem('usuario');
     Swal.fire({
         icon: 'success',
         title: 'Sesión cerrada',
