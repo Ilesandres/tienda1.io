@@ -14,7 +14,7 @@
         <h1 class="text-center text-secondary font-weight-bold ">Sección Personal</h1>
     </header>
     <nav class="text-center my-3">
-        <button class="btn btn-primary mx-2" onclick="window.location='../index.php'">Inicio</button>
+        <button class="btn btn-primary mx-2" onclick="window.location='/index.php'">Inicio</button>
         <button class="btn btn-danger mx-2" onclick="cerrarSesion()">Cerrar Sesión</button>
     </nav>
     <div class="container-fluid row">
@@ -22,8 +22,8 @@
             <fieldset>
                 <legend class="text-center">Nuevo Producto</legend>
                 <?php 
-                require_once './config.php';
-                require_once './nuevoproducto.php';
+                require_once '/platvent_2/php/controladores/config.php';
+                require_once '/platvent_2/php/controladores/nuevoproducto.php';
                 ?>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Descripción o Nombre</label>
@@ -73,7 +73,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    require_once './config.php';
+                    require_once '/platvent_2/php/controladores/config.php';
 
                     $conn = conectarDB();
 
@@ -85,7 +85,7 @@
                             ?>
                             <tr>
                                 <td><?= $datos['id'] ?></td>
-                                <td><img src="../img/<?= $datos['img'] ?>" alt="img" class="img-thumbnail" width="50"></td>
+                                <td><img src="/img/<?= $datos['img'] ?>" alt="img" class="img-thumbnail" width="50"></td>
                                 <td><?= $datos['descripcion'] ?></td>
                                 <td><?= $datos['unidadMedida'] ?></td>
                                 <td><?= $datos['saldo'] ?></td>
@@ -94,7 +94,7 @@
                                 <td><?= $datos['fechaRegistro'] ?></td>
                                 <td><?= $datos['fechaActualizacion'] ?></td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="/php/pantallas/modifyProduct.php" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
@@ -115,8 +115,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/verifysesionstorage.js"></script>
-    <script src="../js/user.js">
+    <script src="/js/verifysesionstorage.js"></script>
+    <script src="/js/user.js">
        
     </script>
 </body>

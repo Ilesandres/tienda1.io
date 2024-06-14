@@ -9,7 +9,7 @@ function cerrarSesion() {
         confirmButtonText: 'Aceptar'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = "../php/login.php";
+            window.location.href = "/php/pantallas/login.php";
         }
     });
 }

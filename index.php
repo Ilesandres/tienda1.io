@@ -1,68 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos</title>
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<div class="Title">
- <h1 class="title">Lista de Productos</h1>
-</div>
-   
-    <nav>
-    <ul>
-    <li><a href="./php/login.php">login</a></li>
-    <li><a href="">acerca de</a></li>
-    <li><a href="">contactanos</a></li>
-    <li><a href="">carrito</a></li>
-    </ul>
-    </nav>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>imagen</th>
-            <th>descripcion</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            
-        </tr>
-        <?php
-        // Incluir archivo de configuración
-        require_once './php/config.php';
-        
 
-        // Obtener conexión a la base de datos
+<body>
+    <div class="Title">
+        <h1 class="title p-5">Lista de Productos</h1>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="/php/pantallas/login.php">login</a></li>
+            <li><a href="">acerca de</a></li>
+            <li><a href="">contactanos</a></li>
+            <li><a href="">carrito</a></li>
+        </ul>
+    </nav>
+
+    <div class="colum-3">
+        <?php
+        require_once '/platvent_2/php/controladores/config.php';
+
         $conn = conectarDB();
 
-        // Consulta SQL para obtener los datos de la tabla products
-        $sql = "SELECT id, img, descripcion, precioBase, saldo FROM producto";
+        $sql = "SELECT * FROM producto";
         $result = $conn->query($sql);
 
-        // Verificar si hay resultados
         if ($result->num_rows > 0) {
-            // Salida de datos de cada fila
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["id"]. "</td>";
-                echo '<td><img src="./img/'.$row["img"].'" alt="Imagen del producto"></td>';
-                echo "<td>" . $row["descripcion"]. "</td>";
-                echo "<td>" . $row["precioBase"]. "</td>";
-                echo "<td>" . $row["saldo"]. "</td>";
-               // echo '<td><button type="button">editar</button></td> ';
-                echo "</tr>";
+            while ($datos = $result->fetch_assoc()) {
+        ?>
+                <div class="container">
+                    <div class="image p-3">
+                        <img src='/img/<?= $datos["img"] ?>' alt="">
+                    </div>
+                    <h2><?=$datos["descripcion"]?></h2>
+                    <h4><b> precio: <?=$datos["precioBase"]?></b></h4>
+                </div>
+               
+                
+        <?php
             }
         } else {
-            echo "<tr><td colspan='4'>0 resultados</td></tr>";
+            echo "<tr><td colspan='10' class='text-center'>0 resultados</td></tr>";
         }
 
-        // Cerrar conexión
         $conn->close();
         ?>
-        
-       
-    </table> 
-    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
+
 </html>
