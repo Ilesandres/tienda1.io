@@ -52,7 +52,7 @@
                     <label for="formFile" class="form-label">Imagen del Producto (JPG o PNG)</label>
                     <input class="form-control" type="file" name="img" id="formFile">
                 </div>
-                <button type="submit" name="btnregistrar" value="ok" class="btn btn-success w-100">Agregar</button>
+                <button type="button" name="btnregistrar" value="ok" class="btn btn-success w-100">Agregar</button>
             </fieldset>
         </form>
         <div class="col-8 p-4">

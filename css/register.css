@@ -37,6 +37,12 @@
 border-radius:10px;
   
 }
+.form label {
+  font-family: FontAwesome, "Roboto", sans-serif;
+font-size: 14px;
+transform: translateY(-5px);
+  
+}
 
 .form select {
   font-family: FontAwesome, "Roboto", sans-serif;

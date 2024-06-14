@@ -11,8 +11,18 @@ document.getElementById("departamento").addEventListener("change", function (eve
     municipio.disabled=true;
     }
     
-    
   });
+  
+  function show() {
+    var password = document.getElementById("password");
+    var icon = document.querySelector(".fas");
+    if (password.type === "password") {
+      password.type = "text";
+    } else {
+      password.type = "password";
+    }
+  }
+  
 
 
 function loadMuni(departamentoId){
