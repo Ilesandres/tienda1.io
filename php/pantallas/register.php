@@ -20,13 +20,7 @@
     </head>
 
     <body class="body">
-      <a href="https://github.com/Mehedi61/Login-form-Sign-up-form"
-        ><img
-          style="position: absolute; top: 0; left: 0; border: 0"
-          src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67"
-          alt="Fork me on GitHub"
-          data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"
-      /></a>
+     
 
       <div class="login-page">
         <div class="form">
@@ -40,6 +34,44 @@
               autoplay
             ></lottie-player>
             <input type="text" placeholder="full name" />
+            <select name="departamento" id="departamento" >
+            <option value="null">departamento</option>
+            <?php
+            require_once '/platvent_2/php/controladores/config.php';
+            
+            $conn =conectarDB();
+            $dep='select * from departamento order by 1 ';
+            $result=$conn->query($dep);
+            $idDepa=null;
+            
+            if($result->num_rows>0){
+            while($datos=$result->fetch_assoc()){
+            
+            
+            ?>
+            <option value="<?=$datos['idDepartamento']?>"><?=$datos['departamento']?></option>
+            
+        
+            <?php
+        
+            
+            }?>
+            </select>
+            
+            <?php
+            
+           
+            }
+            ?>
+            
+            
+            <select name="municipio" id="municipio" disabled >
+            
+            <option value="municipio">municipio</option>
+            
+            </select>
+            <input type="text" placeholder="Departamento de residencia" />
+            <input type="text" placeholder="Municipio de residencia" />
             <input type="text" placeholder="email address" />
             <input type="text" placeholder="pick a username" />
             <input type="password" id="password" placeholder="set a password" />
@@ -60,8 +92,6 @@
       function show() {
         var password = document.getElementById("password");
         var icon = document.querySelector(".fas");
-
-        // ========== Checking type of password ===========
         if (password.type === "password") {
           password.type = "text";
         } else {
@@ -69,5 +99,7 @@
         }
       }
     </script>
+    
+    <script src="/js/register.js"></script>
   </html>
 </html>

@@ -42,7 +42,7 @@ function iniciarSecion() {
         await Swal.fire({
           title: "Bienvenido " + user,
           text: "iniciando sesion",
-          icon: "succes",
+          icon: "success",
         });
         window.location.href = "/php/pantallas/user.php";
       } else {
