@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usuario_escapado = mysqli_real_escape_string($con, $usuario);
 
     // Consulta SQL para seleccionar todos los usuarios con el nombre de usuario correspondiente
-    $sql = "SELECT usuario, contraseña FROM usuario WHERE usuario='$usuario_escapado'";
+    $sql = "SELECT * FROM usuario WHERE usuario='$usuario_escapado'";
     $result = $con->query($sql);
 
     $login_success = false;
@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $response = array(
                     'status' => 'success',
                     'message' => 'Inicio de sesión exitoso',
+                    'iduser' => $row['idUsuario'],
                     'usuario' => $usuario
                 );
                 echo json_encode($response);

@@ -20,7 +20,7 @@
             <li><a href="/php/pantallas/login.php">login</a></li>
             <li><a href="">acerca de</a></li>
             <li><a href="">contactanos</a></li>
-            <li><a href="">carrito</a></li>
+            <li><a href="/php/pantallas/carrito.php">carrito</a></li>
         </ul>
     </nav>
 
