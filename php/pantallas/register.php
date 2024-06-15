@@ -11,6 +11,7 @@
       <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     </head>
 
@@ -19,7 +20,7 @@
 
       <div class="login-page">
         <div class="form">
-          <form method="POST" > 
+          <form method="POST"> 
             <lottie-player
               src="https://assets4.lottiefiles.com/datafiles/XRVoUu3IX4sGWtiC3MPpFnJvZNq7lVWDCa8LSqgS/profile.json"
               background="transparent"
@@ -64,15 +65,15 @@
             <option value="null">municipio</option>
             
             </select>
-            <input type="text" placeholder="username" />
-            <label for="nacimiento" class="nacimiento">fecha de nacimiento</label>
+            <input type="text" name="username" placeholder="username" />
+            <label for="nacimiento" name="nacimiento" class="nacimiento">fecha de nacimiento</label>
             <input type="date" name="nacimiento" placeholder="fecha de nacimiento">
-            <input type="email" placeholder="email address" />
-            <input type="password" id="password" placeholder="set a password" />
+            <input type="email" name="email" placeholder="email address" />
+            <input type="password" name="password" id="password" placeholder="set a password" />
             <i class="fas fa-eye" onclick="show()"></i>
             <br>
             <br>
-            <button type="button" name="btnregisteruser" value="ok"> Registrar </button>
+            <button type="buttom" name="btnregisteruser" value="ok"> Registrar </button>
           </form>
 
           <form class="login-form">
@@ -84,7 +85,7 @@
         </div>
       </div>
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script src="/js/register.js"></script>
   </html>
 </html>

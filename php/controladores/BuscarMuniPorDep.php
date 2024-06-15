@@ -13,7 +13,7 @@ if (isset($_GET['idDepartamento'])) {
     if ($resultMun->num_rows > 0) {
         echo '<option value="null">municipio</option>';
         while ($datosMun = $resultMun->fetch_assoc()) {
-            echo '<option value="' . $datosMun['idMunicipio'] . '">' . $datosMun['municipio'] . '</option>';
+            echo '<option value="'. $datosMun['idMunicipio']. '">' . $datosMun['municipio'] . '</option>';
         }
     } else {
         echo '<option value="null">No hay municipios disponibles</option>';

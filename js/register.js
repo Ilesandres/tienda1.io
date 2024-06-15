@@ -38,3 +38,4 @@ console.log('depa ID '+departamentoId);
     };
     xhr.send();
 }
+
