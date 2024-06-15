@@ -14,23 +14,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Escapar las variables para evitar la inyección SQL
     $usuario_escapado = mysqli_real_escape_string($con, $usuario);
-    $contraseña_escapada = mysqli_real_escape_string($con, $contraseña);
 
-    // Consulta SQL para seleccionar un usuario con la contraseña correspondiente
-    $sql = "SELECT usuario, contraseña FROM usuario WHERE usuario='$usuario_escapado' AND contraseña='$contraseña_escapada'";
+    // Consulta SQL para seleccionar todos los usuarios con el nombre de usuario correspondiente
+    $sql = "SELECT usuario, contraseña FROM usuario WHERE usuario='$usuario_escapado'";
     $result = $con->query($sql);
 
+    $login_success = false;
+
     if ($result->num_rows > 0) {
-        // Si se encuentra un usuario con la contraseña correspondiente
-        $response = array(
-            'status' => 'success',
-            'message' => 'Inicio de sesión exitoso',
-            'usuario' => $usuario
-            
-        );
-        echo json_encode($response);
-    } else {
-        // Si no se encuentra un usuario con la contraseña correspondiente
+        // Si se encuentran usuarios con el nombre de usuario correspondiente
+        while ($row = $result->fetch_assoc()) {
+            $contraseña_hash = $row['contraseña'];
+
+            // Verificar si la contraseña ingresada coincide con el hash almacenado
+            if (password_verify($contraseña, $contraseña_hash)) {
+                // Si la contraseña coincide para al menos un usuario
+                $login_success = true;
+                $response = array(
+                    'status' => 'success',
+                    'message' => 'Inicio de sesión exitoso',
+                    'usuario' => $usuario
+                );
+                echo json_encode($response);
+                break; // Salir del bucle ya que hemos encontrado una coincidencia exitosa
+            }
+        }
+    }
+
+    if (!$login_success) {
+        // Si no se encontró ningún usuario con el nombre de usuario y la contraseña correspondientes
         $response = array(
             'status' => 'error',
             'message' => 'Usuario o contraseña incorrectos'
@@ -45,3 +57,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     );
     echo json_encode($response);
 }
+?>
