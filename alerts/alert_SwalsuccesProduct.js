@@ -9,10 +9,12 @@ function alertaproducto() {
 
         // Determinar el título y el icono de acuerdo al estado
         if (status === 'success') {
-            title = 'Éxito';
+            title = 'bien hecho';
+            text='producto agregado o modificado con exito';
             icon = 'success';
         } else {
             title = 'Error';
+            text='no se ha podido agregar el producto';
             icon = 'error';
         }
 

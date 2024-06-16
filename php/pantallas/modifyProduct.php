@@ -18,7 +18,7 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar producto</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/modifyProduct.css">
@@ -36,8 +36,10 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
     <div class="container-fluid row ">
         <form class="col-6 p-3 border rounded shadow-sm m-auto" method="POST" enctype="multipart/form-data">
             <fieldset>
-                <legend class="text-center">Nuevo Producto</legend>
+                <legend class="text-center">editar Producto</legend>
+                <input class="form-control" type="hidden" name="idProduct" value="<?=$idGet?>"  readonly>
                 <?php
+                require_once '/platvent_2/php/controladores/editarProducto.php';
 
                 while ($producto = $sql->fetch_object()) {
 
@@ -64,10 +66,10 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
 
                                 if ($est->num_rows > 0) {
                                     while ($estado = $est->fetch_assoc()) {
-                                        if ($estado['idestadoProducto'] == $producto->idestadoProducto) {
+                                        if ($estado['idestadoProducto'] == $producto->estado) {
 
                                             ?>
-                                                        <option value="<?= $estado['idestadoProducto'] ?>" selected><?= $estado['estado'] ?></option>
+                                                        <option value="<?= $estado['idestadoProducto'] ?>" selected ><?= $estado['estado'] ?></option>
                                                         <?php
 
                                         } else {
@@ -89,17 +91,21 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
                             </div>
                             <div class="mb-3">
                                 <label for="precioBase" class="form-label">Precio Base</label>
-                                <input type="number" name="precioBase" id="precioBase" class="form-control" placeholder="Precio Base" value="<?= $producto->precioBase ?>">
+                                <input type="number" step="any" name="precioBase" id="precioBase" class="form-control" placeholder="Precio Base" value="<?= $producto->precioBase ?>">
                             </div>
                             <div class="mb-3">
-                                <label for="formFile" class="form-label" value='<?= $producto->img ?>'>Imagen del Producto (JPG o PNG)</label>
-                                <input class="form-control" id="img" type="file" name="img" id="formFile">
+                                <label for="inputimg" class="form-label">img</label>
+                                <input type="text" name="inputimg" id="inputimg" readonly class="form-control" placeholder="inputimg" value="<?= $producto->img ?>">
                             </div>
-                            <div>
-                                <img id="previewImage" src="" alt="Previsualización de la imagen" style="max-width: 100px; display: none; margin:auto;">
+                            <div class="mb-3">
+                                <img id="previewImage" src="/img/<?=$producto->img?>" alt="Previsualización de la imagen" alt="vistaimg" style="max-width: 100px; display: none; margin:auto;">
                             </div>
-                            <button type="submit" name="btnregistrar" value="ok" class="btn btn-success w-100">Agregar</button>
-                
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label" value='<?= $producto->img?>' id="imgProduct">Imagen del Producto (JPG o PNG)</label>
+                                <input class="form-control" id="img" type="file" value="" name="img">
+                            </div>
+                            <button type="buttom" name="btnmodificar" value="ok" class="btn btn-success w-100">modificar</button>
+
                 
                             <?php
 
@@ -115,6 +121,6 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
     </div>
     
     
-    <script src="/js/previw_img.js"></script>
+    <script src="/js/modifyProduct.js"></script>
 </body>
 </html>
