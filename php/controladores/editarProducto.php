@@ -73,7 +73,7 @@ if(!empty($_POST['nombre']) &&!empty($_POST['cantidad']) &&!empty($_POST['medida
       
       
         }else{
-          header('location: /php/pantallas/user.php?status=success&message=Producto editado con éxito, sin imagen');
+          header('location: /php/pantallas/user.php?status=warning&message=Producto editado con éxito, sin imagen');
         }
     
     }else{

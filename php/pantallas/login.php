@@ -11,7 +11,7 @@
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'> 
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-  
+  <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="body">
@@ -19,7 +19,7 @@
 	
 <div class="login-page">
   <div class="form">
-  <button type="button" onclick="window.location.href='/index.php'" >inicio</button>
+  <a href="/index.php" title="inicio"><i class="fa-solid fa-house"></i></a>
     <form>
       <lottie-player src="https://assets4.lottiefiles.com/datafiles/XRVoUu3IX4sGWtiC3MPpFnJvZNq7lVWDCa8LSqgS/profile.json"  background="transparent"  speed="1"  style="justify-content: center;" loop  autoplay></lottie-player>
       <input type="text" id="user" placeholder="&#xf007;  username"/>

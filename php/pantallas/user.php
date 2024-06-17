@@ -23,8 +23,8 @@
         <h1 class="text-center text-secondary font-weight-bold ">Sección Personal</h1>
     </header>
     <nav class="text-center my-3">
-        <button class="btn btn-primary mx-2" onclick="window.location='/index.php'">Inicio</button>
-        <button class="btn btn-danger mx-2" onclick="cerrarSesion()">Cerrar Sesión</button>
+        <button class="btn btn-primary mx-2" title="inicio" onclick="window.location='/index.php'"><i class="fa-solid fa-house"></i></button>
+        <button class="btn btn-danger mx-2" title="cerrar sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
     </nav>
     <div class="container-fluid row">
     <form class="col-3 p-3 border rounded shadow-sm" method="POST" enctype="multipart/form-data">
@@ -82,6 +82,9 @@
             </fieldset>
         </form>
         <div class="col-8 p-4">
+        <?php
+            require_once '/platvent_2/php/controladores/eliminarProducto.php'
+        ?>
             <table class="table table-striped table-hover table-bordered">
                 <thead class="bg-primary text-white">
                     <tr>
@@ -89,6 +92,7 @@
                         <th scope="col">Imagen</th>
                         <th scope="col">Descripción</th>
                         <th scope="col">Unidad de Medida</th>
+                        <th scope="col">Stock</th>
                         <th scope="col">Saldo</th>
                         <th scope="col">Precio Base</th>
                         <th scope="col">Estado</th>
@@ -101,7 +105,7 @@
                     <?php
                   
 
-                    $sql = ' select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,
+                    $sql = ' select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,producto.stock,
                             producto.saldo ,producto.precioBase, estadoproducto.estado,producto.fechaRegistro,
                             producto.fechaActualizacion,producto.idUsuario
                             from producto
@@ -116,6 +120,7 @@
                                 <td><img src="/img/<?= $datos['img'] ?>" alt="img" class="img-thumbnail" width="60"></td>
                                 <td><?= $datos['descripcion'] ?></td>
                                 <td><?= $datos['unidadMedida'] ?></td>
+                                <td><?= $datos['stock']?></td>
                                 <td><?= $datos['saldo'] ?></td>
                                 <td><?= $datos['precioBase'] ?></td>
                                 <td><?= $datos['estado'] ?></td>
@@ -123,7 +128,7 @@
                                 <td><?= $datos['fechaActualizacion'] ?></td>
                                 <td class="text-center">
                                     <a href="/php/pantallas/modifyProduct.php?id=<?=$datos['id']?>" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                                    <a href="/php/pantallas/user.php?id=<?=$datos['id']?>&&img=<?=$datos['img']?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
                             <?php

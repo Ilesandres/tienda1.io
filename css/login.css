@@ -24,7 +24,7 @@
   
 }
 .form input {
-  font-family: FontAwesome, "Roboto", sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -53,9 +53,31 @@ border-radius:30px;
   transition: all 0.3 ease;
   cursor: pointer;
   transition: all 0.2s;
-
-
 }
+.form a {
+  display: flex;
+  align-items:flex-start;
+  transform: translateX(-100px);
+  transform: translateY(-25px);
+  font-family: "Titillium Web", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: .1em;
+  outline: 0;
+  background: #17a589;
+  width: 6%;
+  border: 0;
+  border-radius:30px;
+  padding: 15px;
+  color: #FFFFFF;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+
+
 .form button:hover,.form button:focus {
   background: #148f77;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
