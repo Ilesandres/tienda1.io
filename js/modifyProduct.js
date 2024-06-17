@@ -33,3 +33,31 @@ document.getElementById('img').addEventListener('change', function(event) {
         reader.readAsDataURL(file);
     }
 });
+
+
+function sesionStorage() {
+  const user = sessionStorage.getItem("user");
+  const currentPath = window.location.pathname;
+
+  // Verifica si el usuario está autenticado
+  if (user !== null) {
+   
+      
+      
+  } else {
+      // Si el usuario no está autenticado, muestra una alerta y redirige al inicio de sesión
+      Swal.fire({
+          icon: 'error',
+          title: 'No has iniciado sesión',
+          text: 'Por favor, inicia sesión.',
+          confirmButtonText: 'Aceptar'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href = "/php/pantallas/login.php";
+          }
+      });
+  }
+}
+
+// Ejecuta la función
+sesionStorage();

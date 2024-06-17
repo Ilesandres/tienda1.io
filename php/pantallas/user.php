@@ -34,8 +34,7 @@
                 require_once '/platvent_2/php/controladores/nuevoproducto.php';
                 ?>
                 <div class="mb-3">
-                    <label for="usuario" class="form-label">Usuario</label>
-                    <input type="text" id="usuario" readonly name="usuario"  class="form-control">
+                    <input type="hidden" id="usuario" readonly name="usuario"  class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Descripción o Nombre</label>
@@ -102,7 +101,11 @@
                     <?php
                   
 
-                    $sql = "SELECT * FROM producto";
+                    $sql = ' select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,
+                            producto.saldo ,producto.precioBase, estadoproducto.estado,producto.fechaRegistro,
+                            producto.fechaActualizacion,producto.idUsuario
+                            from producto
+                            inner join estadoproducto on producto.estado=estadoproducto.idestadoProducto  order by 1';
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -110,7 +113,7 @@
                             ?>
                             <tr>
                                 <td><?= $datos['id'] ?></td>
-                                <td><img src="/img/<?= $datos['img'] ?>" alt="img" class="img-thumbnail" width="50"></td>
+                                <td><img src="/img/<?= $datos['img'] ?>" alt="img" class="img-thumbnail" width="60"></td>
                                 <td><?= $datos['descripcion'] ?></td>
                                 <td><?= $datos['unidadMedida'] ?></td>
                                 <td><?= $datos['saldo'] ?></td>

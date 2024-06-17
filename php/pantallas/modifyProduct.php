@@ -31,7 +31,7 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
     </header>
     <nav class="text-center my-3">
         <button class="btn btn-primary mx-2" onclick="window.location='/index.php'">Inicio</button>
-        <button class="btn btn-danger mx-2" onclick="cerrarSesion()">Cerrar Sesión</button>
+        <button class="btn btn-danger mx-2" onclick="window.location.href='/php/pantallas/user.php'">Mis productos</button>
     </nav>
     <div class="container-fluid row ">
         <form class="col-6 p-3 border rounded shadow-sm m-auto" method="POST" enctype="multipart/form-data">
@@ -39,6 +39,7 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
                 <legend class="text-center">editar Producto</legend>
                 <input class="form-control" type="hidden" name="idProduct" value="<?=$idGet?>"  readonly>
                 <?php
+                
                 require_once '/platvent_2/php/controladores/editarProducto.php';
 
                 while ($producto = $sql->fetch_object()) {
@@ -94,14 +95,14 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
                                 <input type="number" step="any" name="precioBase" id="precioBase" class="form-control" placeholder="Precio Base" value="<?= $producto->precioBase ?>">
                             </div>
                             <div class="mb-3">
-                                <label for="inputimg" class="form-label">img</label>
-                                <input type="text" name="inputimg" id="inputimg" readonly class="form-control" placeholder="inputimg" value="<?= $producto->img ?>">
+                                <label for="imgAfter" class="form-label">img</label>
+                                <input type="text" name="imgAfter" id="imgAfter"  class="form-control" placeholder="imgAfter" readonly value="<?= $producto->img ?>">
                             </div>
                             <div class="mb-3">
                                 <img id="previewImage" src="/img/<?=$producto->img?>" alt="Previsualización de la imagen" alt="vistaimg" style="max-width: 100px; display: none; margin:auto;">
                             </div>
                             <div class="mb-3">
-                                <label for="formFile" class="form-label" value='<?= $producto->img?>' id="imgProduct">Imagen del Producto (JPG o PNG)</label>
+                                <label for="formFile" class="form-label" id="imgProduct">Imagen del Producto (JPG o PNG)</label>
                                 <input class="form-control" id="img" type="file" value="" name="img">
                             </div>
                             <button type="buttom" name="btnmodificar" value="ok" class="btn btn-success w-100">modificar</button>
@@ -122,5 +123,6 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
     
     
     <script src="/js/modifyProduct.js"></script>
+    <script ></script>
 </body>
 </html>

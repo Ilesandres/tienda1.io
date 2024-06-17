@@ -12,10 +12,14 @@ function alertaproducto() {
             title = 'bien hecho';
             text='producto agregado o modificado con exito';
             icon = 'success';
-        } else {
+        } else if(status==='Error'){
             title = 'Error';
             text='no se ha podido agregar el producto';
             icon = 'error';
+        }else if(status ==='warning'){
+            title = 'producto editado sin imagen';
+            text='se ha agregado el producto con exito pero verifica si subiste una imagen nueva';
+            icon = 'warning';
         }
 
         // Mostrar la alerta con SweetAlert2

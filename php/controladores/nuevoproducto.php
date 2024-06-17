@@ -19,7 +19,7 @@ if (!empty($_POST['btnregistrar'])) {
         $estado = ($estadoValue);
         $iduser= intval($_POST['usuario']);
 
-        $imgPath = 'default.png'; // Default image path
+        $imgPath = 'default.png'; //imagen que se va a cargar por default
 
         if (!empty($_FILES['img']['tmp_name'])) {
             $ruta = '/platvent_2/img/';
