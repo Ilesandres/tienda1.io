@@ -2,7 +2,7 @@
 
 Este es un proyecto de un juego de puzzle numérico 3x3 desarrollado en HTML, CSS y JavaScript. El objetivo del juego es ordenar los números del 1 al 9 en una cuadrícula 3x3.
 
-![Tienda en linea SQl](img)
+![Tienda en linea SQl](https://github.com/Ilesandres/img_Proyects/blob/main/image.png)(https://github.com/Ilesandres/img_Proyects/blob/main/store-proyect.png)
 
 ## 📋 Tabla de contenidos
 
