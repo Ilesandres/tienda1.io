@@ -1,3 +1,16 @@
+
+<?php
+
+require_once '/platvent_2/php/controladores/config.php';
+require_once '/platvent_2/php/controladores/buscarProduct.php';
+
+$conn = conectarDB();
+
+$idGet =$_GET['id'];
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,40 +27,45 @@
     <div class="Title">
         <h1 class="title p-5">Lista de Productos</h1>
     </div>
+
     <nav>
         <ul>
+            <li title="Inicio"><a href="/index.php"><i class="fa-solid fa-house"></i></a></li>
             <li><a href="/php/pantallas/login.php">login</a></li>
             <li><a href="">acerca de</a></li>
             <li><a href="">contactanos</a></li>
             <li><a href="/php/pantallas/carrito.php">carrito</a></li>
-           
-     
-                <li class="search"><input name="search" id="search" type="search" required>
+            
+            
+          
+          <li class="search"><input value="<?=$idGet?>" name="search" id="search" type="search" required>
                     <span for="search">
                         <button type="button" onclick="buscar()" name="btnsearch" title="buscar">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </span>
                 </li>
-
+    
             
         </ul>
     </nav>
+
     
     <div class="colum-3 m-5">
    
     
     
         <?php
-        require_once '/platvent_2/php/controladores/config.php';
+        
 
-        $conn = conectarDB();
 
-        $sql = ' select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,producto.stock,
+
+        $sql =  "select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,producto.stock,
                             producto.saldo ,producto.precioBase, estadoproducto.estado,producto.fechaRegistro,
                             producto.fechaActualizacion,producto.idUsuario
                             from producto
-                            inner join estadoproducto on producto.estado=estadoproducto.idestadoProducto  order by 1';
+                            inner join estadoproducto on producto.estado=estadoproducto.idestadoProducto  where 
+                            producto.descripcion like '%$idGet%'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -68,7 +86,7 @@
         <?php
             }
         } else {
-            echo "<tr><td colspan='10' class='text-center'>0 resultados</td></tr>";
+            echo '<div class="alert alert-info">producto no encontrado</div>';
         }
 
         $conn->close();
@@ -76,7 +94,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/js/buscarProdcuto.js"></script>
+    <script src="/js/buscarProdcuto.js" > </script>
 
 </body>
 
