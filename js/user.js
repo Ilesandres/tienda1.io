@@ -1,7 +1,6 @@
 function clasidhome() {
   let isurres = document.getElementById("usuario");
   isurres.value = sessionStorage.getItem("userclasId");
-  console.log(sessionStorage.getItem("userclasId"));
 }
 
 document
@@ -63,4 +62,10 @@ function SearchProduct() {
     icon:'error'
     });
   }
+}
+
+
+function perfil(){
+let user=sessionStorage.getItem("userclasId");
+window.location.href='/php/pantallas/perfil.php?user='+user;
 }
