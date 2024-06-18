@@ -5,7 +5,7 @@ function sesionStorage() {
     // Verifica si el usuario está autenticado
     if (user !== null) {
         // Verifica si la ruta actual es diferente de la ruta protegida
-        if (currentPath !== '/php/pantallas/user.php') {
+        if (currentPath !== '/php/pantallas/user.php' && currentPath !=='/php/pantallas/modifyProduct.php' && currentPath!='/php/pantallas/buscarProduct.php') {
             window.location.href = "/php/pantallas/user.php";
         }
     } else {

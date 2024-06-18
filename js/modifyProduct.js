@@ -61,3 +61,7 @@ function sesionStorage() {
 
 // Ejecuta la función
 sesionStorage();
+
+function Back(){
+history.back();
+}

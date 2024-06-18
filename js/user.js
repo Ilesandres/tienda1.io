@@ -44,6 +44,23 @@ function acercaDe() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    clasidhome();
+document.addEventListener("DOMContentLoaded", (event) => {
+  clasidhome();
 });
+
+function cerrarBuscar() {
+  window.location.href = "/php/pantallas/user.php";
+}
+
+function SearchProduct() {
+  let valor = document.getElementById("search").value;
+  if (valor) {
+    window.location.href = "/php/pantallas/buscarProduct.php?search=" + valor;
+  } else {
+    Swal.fire({
+    title:'error',
+    text: 'ingresa el valor a buscar ',
+    icon:'error'
+    });
+  }
+}

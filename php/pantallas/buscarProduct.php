@@ -2,6 +2,7 @@
   require_once '/platvent_2/php/controladores/config.php';
 
   $conn = conectarDB();
+  $valorGet=$_GET['search'];
 
 ?>
 
@@ -16,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    <link rel="stylesheet" href="/css/user.css">
     <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
 
 </head>
 <body>
@@ -25,9 +27,7 @@
     <nav class="text-center my-3">
         <button class="btn btn-primary mx-2" title="inicio" onclick="window.location='/index.php'"><i class="fa-solid fa-house"></i></button>
         <a class="btn btn-primary" data-bs-toggle="modal" title="buscar" href="#exampleModalToggle" role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
-        <buttom class="btn btn-primary mx-2 " title="perfil" onclick=""><i class="fa-solid fa-house-user"></i></buttom>
-        <buttom class="btn btn-primary mx-2 " ></buttom>
-        <buttom class="btn btn-primary mx-2 " ></buttom>
+        <button class="btn btn-primary mx-2" title="seccion productos" onclick="window.location.href='/php/pantallas/user.php'"><i class="fa-solid fa-house-flag"></i></button>
         <button class="btn btn-danger mx-2" title="cerrar sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
         
         
@@ -36,7 +36,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalToggleLabel">Buscar producto</h5>
-                <button type="button" class="btn-close" onclick="cerrarBuscar()" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
             <div class="modal-body">
@@ -58,12 +58,11 @@
                 Show a second modal and hide this one with the button below.
             </div>
             <div class="modal-footer">
-            
-              </div>
+                  
+            </div>
             </div>
         </div>
         </div>
-
        
                 
         
@@ -71,62 +70,8 @@
         
         
     </nav>
-    <div class="container-fluid row">
-    <form class="col-3 p-3 border rounded shadow-sm" method="POST" enctype="multipart/form-data">
-            <fieldset>
-                <legend class="text-center">Nuevo Producto</legend>
-                <?php
-                require_once '/platvent_2/php/controladores/nuevoproducto.php';
-                ?>
-                <div class="mb-3">
-                    <input type="hidden" id="usuario" readonly name="usuario"  class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Descripción o Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control"
-                        placeholder="Descripción o nombre">
-                </div>
-                <div class="mb-3">
-                    <label for="cantidad" class="form-label">Cantidad</label>
-                    <input type="number" id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad">
-                </div>
-                <div class="mb-3">
-                    <label for="medida" class="form-label">Unidad de Medida</label>
-                    <input type="text" id="medida" name="medida" class="form-control" placeholder="Unidad de medida">
-                </div>
-                <div class="mb-3">
-                    <label for="estadoSelect" class="form-label">Estado</label>
-                    <select id="estadoSelect" name="estado" class="form-select">
-                        <?php
-                        $es = $conn->query('select *from estadoproducto');
-
-                        if ($es->num_rows > 0) {
-                            while ($estado = $es->fetch_assoc()) {
-                        ?>
-                        <option value="<?= $estado['idestadoProducto'] ?>"><?= $estado['estado'] ?></option>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="precioBase" class="form-label" step="any">Precio Base</label>
-                    <input type="decimal" name="precioBase" id="precioBase" class="form-control"
-                        placeholder="Precio Base">
-                </div>
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Imagen del Producto (JPG o PNG)</label>
-                    <input class="form-control" type="file" name="img" id="formFile" >
-                </div>
-                <div>
-                    <img id="previewImage" src="" alt="img"
-                        style="max-width: 100px; display: none; margin:auto;">
-                </div>
-                <button type="buttom" name="btnregistrar" value="ok" class="btn btn-success w-100" >Agregar</button>
-            </fieldset>
-        </form>
-        <div class="col-8 p-4">
+    <div class="container-fluid row m-auto">
+        <div class="col-8 p-4 m-auto ">
         <?php
             require_once '/platvent_2/php/controladores/eliminarProducto.php'
         ?>
@@ -150,11 +95,11 @@
                     <?php
                   
 
-                    $sql = ' select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,producto.stock,
+                    $sql = " select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,producto.stock,
                             producto.saldo ,producto.precioBase, estadoproducto.estado,producto.fechaRegistro,
                             producto.fechaActualizacion,producto.idUsuario
                             from producto
-                            inner join estadoproducto on producto.estado=estadoproducto.idestadoProducto  order by 1';
+                            inner join estadoproducto on producto.estado=estadoproducto.idestadoProducto  where producto.descripcion like '%$valorGet%'";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {

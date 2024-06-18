@@ -2,7 +2,6 @@
 <?php
 
 require_once '/platvent_2/php/controladores/config.php';
-require_once '/platvent_2/php/controladores/buscarProduct.php';
 
 $conn = conectarDB();
 
