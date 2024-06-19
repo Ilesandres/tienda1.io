@@ -10,7 +10,7 @@ $conn=conectarDB();
 if(!empty($_POST['btnmodificar'])){
 
 if(!empty($_POST['nombre']) &&!empty($_POST['cantidad']) &&!empty($_POST['medida']) &&!empty($_POST['estado']) && $_POST['estado']!=='null'  
-&& !empty($_POST['precioBase']) && empty($_POST['descripcion']) ){
+&& !empty($_POST['precioBase']) && !empty($_POST['descripcion']) ){
 
     
     $nombre=$conn->real_escape_string($_POST['nombre']);
@@ -24,7 +24,7 @@ if(!empty($_POST['nombre']) &&!empty($_POST['cantidad']) &&!empty($_POST['medida
     $fecha_actualizacion = date("Y-m-d H:i:s");
     $imgAfter=$conn->real_escape_string($_POST['imgAfter']);
     
-    $sql=$conn->query("update producto set descripcion='$nombre', stock='$cantidad', unidadMedida='$medida', precioBase='$precioBase', saldo='$saldo',
+    $sql=$conn->query("update producto set descripcion='$nombre',descripcion_complete='$descripcionPro', stock='$cantidad', unidadMedida='$medida', precioBase='$precioBase', saldo='$saldo',
       fechaActualizacion='$fecha_actualizacion', estado='$estado' where id='$idProduct'
     ");
       
