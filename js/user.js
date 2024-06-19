@@ -22,6 +22,7 @@ function cerrarSesion() {
   sessionStorage.removeItem("user");
   sessionStorage.removeItem("super");
   sessionStorage.removeItem("usuario");
+  sessionStorage.removeItem("userclasId");
   Swal.fire({
     icon: "success",
     title: "Sesión cerrada",

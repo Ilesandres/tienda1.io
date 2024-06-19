@@ -3,6 +3,7 @@ function alertaproducto() {
     const urlParams = new URLSearchParams(window.location.search);
     const status = urlParams.get('status');
     const message = urlParams.get('message');
+    const varibel=urlParams.get('page');
 
     if (status && message) {
         let title, icon;
@@ -35,7 +36,9 @@ function alertaproducto() {
                 window.location.href = window.location.pathname; // Recargar sin parámetros
             }
         });
-    }
+    }   
+    
+    
 }
 
 

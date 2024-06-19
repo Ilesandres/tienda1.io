@@ -49,8 +49,12 @@ $sql = $con->query('select *from producto where id=' . $idGet . ' ');
 
                     ?>
                                 <div class="mb-3">
-                                <label for="nombre" class="form-label">Descripción o Nombre</label>
-                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Descripción o nombre" value="<?= $producto->descripcion ?>">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="nombre" value="<?= $producto->descripcion ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Descripción </label>
+                                <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="Descripción " value="<?= $producto->descripcion_complete ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="cantidad" class="form-label">Cantidad</label>

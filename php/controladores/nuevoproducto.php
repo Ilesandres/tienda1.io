@@ -8,9 +8,10 @@ $con = conectarDB();
 if (!empty($_POST['btnregistrar'])) {
     if (
         !empty($_POST['nombre']) && !empty($_POST['cantidad']) && !empty($_POST['medida'])
-        && !empty($_POST['estado']) && !empty($_POST['precioBase']) && (!empty($_POST['usuario']))
+        && !empty($_POST['estado']) && !empty($_POST['precioBase']) && (!empty($_POST['usuario']) && !empty($_POST['descripcion']))
     ) {
         $nombre = $con->real_escape_string($_POST['nombre']);
+        $descripcion= $con->real_escape_string ($_POST['descripcion']);
         $cantidad = intval($_POST['cantidad']);
         $medida = $con->real_escape_string($_POST['medida']);
         $estadoValue = intval($_POST['estado']);
@@ -33,7 +34,7 @@ if (!empty($_POST['btnregistrar'])) {
                 $con->begin_transaction(); // Start transaction
 
                 try {
-                    $registro = $con->query("INSERT INTO producto(descripcion, stock, unidadMedida, saldo, estado, PrecioBase, idUsuario, img) VALUES ('$nombre', '$cantidad', '$medida', '$saldo', '$estado', '$precioBase','$iduser', '')");
+                    $registro = $con->query("INSERT INTO producto(descripcion,descripcion_complete, stock, unidadMedida, saldo, estado, PrecioBase, idUsuario, img) VALUES ('$nombre','$descripcion', '$cantidad', '$medida', '$saldo', '$estado', '$precioBase','$iduser', '')");
 
                     if ($registro) {
                         $idRegistro = $con->insert_id;

@@ -18,11 +18,26 @@ if(!empty($_GET['id']) && !empty($_GET['img'])){
         try{
             unlink($ruta.$imgDelete);
             echo '<div class="alert alert-info">producto eliminado con exito</div>';
-            header("Location: " . $_SERVER['PHP_SELF'] . "?status=success&message=Producto elimanado con éxito");
+            ?>
+            <script>
+            window.location.href='/php/pantallas/user.php?status=success&message=Producto elimanado con éxito';
+            </script>
+            
+            
+            <?php
         }catch(\Throwable $th){
             #code
          }
     } else {
+    
+        ?>
+        <script>
+        window.location.href='/php/pantallas/user.php?status=success&message=Producto elimanado con éxito';
+        </script>
+        
+        
+        <?php
+    
         # code...
     }
     

@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    <link rel="stylesheet" href="/css/user.css">
     <script src="https://kit.fontawesome.com/4a47433372.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/alerts/alert_SwalsuccesProduct.js"></script>
 
 </head>
 <body>
@@ -81,9 +82,14 @@
                     <input type="hidden" id="usuario" readonly name="usuario"  class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Descripción o Nombre</label>
+                    <label for="nombre" class="form-label"> Nombre</label>
                     <input type="text" id="nombre" name="nombre" class="form-control"
-                        placeholder="Descripción o nombre">
+                        placeholder=" nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label"> Descripcion </label>
+                    <input type="text" id="descripcion" name="descripcion" class="form-control"
+                        placeholder="Descripción ">
                 </div>
                 <div class="mb-3">
                     <label for="cantidad" class="form-label">Cantidad</label>
@@ -134,7 +140,8 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Imagen</th>
-                        <th scope="col">Descripción</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripciom</th>
                         <th scope="col">Unidad de Medida</th>
                         <th scope="col">Stock</th>
                         <th scope="col">Saldo</th>
@@ -151,7 +158,7 @@
 
                     $sql = ' select producto.id, producto.img ,producto.descripcion,producto.unidadMedida,producto.stock,
                             producto.saldo ,producto.precioBase, estadoproducto.estado,producto.fechaRegistro,
-                            producto.fechaActualizacion,producto.idUsuario
+                            producto.fechaActualizacion,producto.idUsuario,producto.descripcion_complete
                             from producto
                             inner join estadoproducto on producto.estado=estadoproducto.idestadoProducto  order by 1';
                     $result = $conn->query($sql);
@@ -163,6 +170,7 @@
                                 <td><?= $datos['id'] ?></td>
                                 <td><img src="/img/<?= $datos['img'] ?>" alt="img" class="img-thumbnail" width="60"></td>
                                 <td><?= $datos['descripcion'] ?></td>
+                                <td><?= $datos['descripcion_complete']?></td>
                                 <td><?= $datos['unidadMedida'] ?></td>
                                 <td><?= $datos['stock']?></td>
                                 <td><?= $datos['saldo'] ?></td>
@@ -172,7 +180,7 @@
                                 <td><?= $datos['fechaActualizacion'] ?></td>
                                 <td class="text-center">
                                     <a href="/php/pantallas/modifyProduct.php?id=<?=$datos['id']?>" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="/php/pantallas/user.php?id=<?=$datos['id']?>&&img=<?=$datos['img']?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                                    <a href="/php/pantallas/user.php?id=<?=$datos['id']?>&&img=<?=$datos['img']?>&&page=user" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
                             <?php
@@ -194,6 +202,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/verifysesionstorage.js"></script>
     <script src="/js/user.js"> </script>
-    <script src="/alerts/alert_SwalsuccesProduct.js"></script>
+    
 </body>
 </html>

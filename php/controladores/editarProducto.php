@@ -10,10 +10,11 @@ $conn=conectarDB();
 if(!empty($_POST['btnmodificar'])){
 
 if(!empty($_POST['nombre']) &&!empty($_POST['cantidad']) &&!empty($_POST['medida']) &&!empty($_POST['estado']) && $_POST['estado']!=='null'  
-&& !empty($_POST['precioBase'])){
+&& !empty($_POST['precioBase']) && empty($_POST['descripcion']) ){
 
     
     $nombre=$conn->real_escape_string($_POST['nombre']);
+    $descripcionPro=$conn->real_escape_string($_POST['descripcion']);
     $cantidad=intval($_POST['cantidad']);
     $medida=$conn->real_escape_string($_POST['medida']);
     $estado=intval($_POST['estado']);
