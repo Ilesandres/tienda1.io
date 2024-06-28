@@ -1,6 +1,6 @@
 #🛒📉 tienda en linea con SQL y PHP
 
-Este es un proyecto de un juego de puzzle numérico 3x3 desarrollado en HTML, CSS y JavaScript. El objetivo del juego es ordenar los números del 1 al 9 en una cuadrícula 3x3.
+proyecto para desarrollar el aprendizaje de lenguaje php y js el proyecto como tal no tiene mucha escala pero se espera que en próximas actualizaciones se obtengan mejoras, código completo en mis repositorios como Platvent
 
 ![Tienda en linea SQl](https://github.com/Ilesandres/img_Proyects/blob/main/image.png)
 ![Login](https://github.com/Ilesandres/img_Proyects/blob/main/store-proyect.png)
